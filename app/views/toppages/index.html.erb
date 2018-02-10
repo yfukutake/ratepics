@@ -1,5 +1,19 @@
 <% if logged_in? %>
-  <p>サインイン完了ユーザー: <%= current_user.name %></p>
+  <div class="row">
+    <aside class="col-md-4">
+      <%= form_for(@picture) do |f| %>
+        <div class="form-group">
+          <%= f.label:image, "+Upload Pictures" %>
+          <%= f.file_field:image %>
+          <%= f.hidden_field:image_cache %>
+        </div>
+        <%= f.submit 'Post', class:'btn btn-primary btn-block' %>
+      <% end %>
+    </aside>
+    <div class="col-xs-8">
+      <%= render 'pictures/pictures', pictures: @pictures %>
+    </div>
+  </div>
 <% else %>
   <div class="center jumbotron">
     <div class="text-center">
