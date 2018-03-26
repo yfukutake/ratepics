@@ -52,4 +52,19 @@ class ImageUploader < CarrierWave::Uploader::Base
     name.downcase
   end
   
+  #def asset_host
+  #  return "https://techacademy-yfukutake.c9users.io"
+  #end
+  #def asset_host
+  #  return "https://localhost:8002"
+  #end
+  
+  #def asset_host
+  #  return " request.protocol + request.host_with_port "
+  #end
+
+  #def asset_host
+  #  return " request.url "
+  #end
+  
 end

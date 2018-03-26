@@ -1,0 +1,25 @@
+<% if current_user.rated?(picture) %>
+  <%# @evaluation = Evaluation.find_by(picture_id: @picture, user_id: current_user.id) %>
+  
+  <div class ="stars">
+    <div class="rated" data-score= <%= picture.evaluations.average(:point).round(2) %> ></div>
+  </div>
+  
+  <%= form_for(current_user.evaluations.find_by(picture_id: picture.id), html: { method: :delete }) do |f| %>
+    <%= hidden_field_tag :picture_id, picture.id %>
+    <%= f.submit 'Unrated', class: 'btn btn-danger btn-sm' %>
+  <% end %>
+  
+<% else %>
+ 
+  <%= form_for(current_user.evaluations.build) do |f| %>
+    <div class="stars">
+      <%= hidden_field_tag :picture_id, picture.id %>
+      <div class='rating'></div>
+      <%= f.submit 'RATE', class: 'btn btn-primary btn-sm' %>
+    </div>
+    
+    
+  <% end %>
+  
+<% end %>

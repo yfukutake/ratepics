@@ -6,6 +6,8 @@ class CreateEvaluations < ActiveRecord::Migration[5.1]
       t.integer :point
 
       t.timestamps
+      
+      t.index [:user_id, :picture_id], unique: true
     end
   end
 end

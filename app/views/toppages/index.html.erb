@@ -7,12 +7,35 @@
           <%= f.file_field:image %>
           <%= f.hidden_field:image_cache %>
         </div>
-        <%= f.submit 'Post', class:'btn btn-primary btn-block' %>
+        <%=  f.submit 'Post', class:'btn btn-primary btn-sm' %>
+        
       <% end %>
+      
+      <div class="star"></div>
+      <script>
+        $(".star").raty({ score: 3 });
+      </script>
+      
     </aside>
     <div class="col-xs-8">
       <%= render 'pictures/pictures', pictures: @pictures %>
     </div>
+    
+    <script>
+    $('.rated').raty({
+      path: '/assets/',
+      readOnly: true,
+      score: function() {
+      return $(this).attr('data-score');
+      }
+    });
+    
+    $('.rating').raty({
+        path: '/assets',
+        scoreName: 'evaluation[point]'
+      });
+    </script>
+    
   </div>
 <% else %>
   <div class="center jumbotron">

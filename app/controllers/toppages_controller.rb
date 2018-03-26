@@ -6,6 +6,10 @@ class ToppagesController < ApplicationController
       
       #これは自分の投稿の一覧なので要修正
       @pictures = current_user.pictures.order('created_at DESC').page(params[:page])
+      
+      
+     
+      
     end
   end
 end

@@ -60,3 +60,5 @@ gem 'devise'
 
 gem 'jquery-rails'
 gem 'jquery-raty-rails', github: 'bmc/jquery-raty-rails'
+
+gem 'config'

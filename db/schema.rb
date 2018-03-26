@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20180210193249) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["picture_id"], name: "index_evaluations_on_picture_id"
+    t.index ["user_id", "picture_id"], name: "index_evaluations_on_user_id_and_picture_id", unique: true
     t.index ["user_id"], name: "index_evaluations_on_user_id"
   end
 

@@ -10,4 +10,10 @@ class ApplicationController < ActionController::Base
       redirect_to signin_url
     end
   end
+  
+  def counts(user)
+    @count_pictures=user.pictures.count
+    @count_evaluations = user.evaluations.count
+  end
+  
 end

@@ -1,0 +1,20 @@
+<%# @evaluation = Evaluation.find_by(picture_id: @picture, user_id: current_user.id) %>
+  
+  <div class ="stars">
+    <div class="star-rating" data-score= <%= picture.evaluations.average(:point).round(2) %> ></div>
+  </div>
+  
+  <%= form_for(current_user.evaluations.find_by(picture_id: picture.id), html: { method: :delete }) do |f| %>
+    <%= hidden_field_tag :picture_id, picture.id %>
+    <%= f.submit 'Unrated', class: 'btn btn-danger btn-block' %>
+  <% end %>
+  
+  <script>
+  	$('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function() {
+    return $(this).attr('data-score');
+  }
+  });
+  </script>
