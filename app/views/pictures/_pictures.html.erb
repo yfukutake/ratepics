@@ -7,9 +7,9 @@
         <div>
           <%= link_to user.name, user_path(user) %> <span class="text-muted">posted at <%= picture.created_at %></span>
         </div>
-        <h2 class="mygraph"></h2>
-        <div class="pic">
-          <img class="media-object img-rounded" src="<%=request.protocol + request.host_with_port + picture.image.url %>" alt="">
+        <h2 class="mygraph<%= pictures.find_index picture %>"></h2>
+        <div class="pic" >
+          <img class="media-object img-rounded" src="<%= picture.image.url%>" alt="">
         </div>
         <%= render 'evaluations/rate_button', picture: picture %>
         <div>
@@ -20,42 +20,41 @@
           <% end %>
         </div>
       </div>
-    </li>
     
-    <script>
-      var subscriptionKey = "Key c917092ca91e47019a52f443debc131f";
-      var params=JSON.stringify({
-        "inputs": [
-          {
-            "data": {
-              "image": {
-                "url": "<%= request.protocol + request.host_with_port + picture.image.url %>"
+      <script>
+        var subscriptionKey = "Key c917092ca91e47019a52f443debc131f";
+        var params=JSON.stringify({
+          "inputs": [
+            {
+              "data": {
+                "image": {
+                  "url": "<%= picture.image.url %>"
+                }
               }
             }
-          }
-        ]
-      });
-      $.ajax({
-        url: "https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs",
-        beforeSend: function(xhrObj){
-          // Request headers
-          xhrObj.setRequestHeader("Authorization", subscriptionKey);
-          xhrObj.setRequestHeader("Content-Type", "application/json");
-        },
-        type: "POST",
-        data: params,
-        dataType: "json",
-      }).done(function(data){
-          var str = JSON.stringify(data);
-          var obj = JSON.parse(str);
-          var concepts = obj.outputs[0].data.concepts;
-          var random = Math.floor(Math.random()*concepts.length);
-          $(".mygraph").html(concepts[random].name);
-          console.log(str);
-      }).fail(function(jqXHR, textStatus, errorThrown){
-      });
-    </script>
-    
+          ]
+        });
+        $.ajax({
+          url: "https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs",
+          beforeSend: function(xhrObj){
+            // Request headers
+            xhrObj.setRequestHeader("Authorization", subscriptionKey);
+            xhrObj.setRequestHeader("Content-Type", "application/json");
+          },
+          type: "POST",
+          data: params,
+          dataType: "json",
+        }).done(function(data){
+            var str = JSON.stringify(data);
+            var obj = JSON.parse(str);
+            var concepts = obj.outputs[0].data.concepts;
+            var random = Math.floor(Math.random()*concepts.length);
+            $(".mygraph<%= pictures.find_index picture %>").html(concepts[random].name);
+            console.log(str);
+        }).fail(function(jqXHR, textStatus, errorThrown){
+        });
+      </script>
+    </li>
   <% end %>
   
   <%= paginate pictures %>
