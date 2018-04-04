@@ -1,0 +1,129 @@
+.wrapper {
+    display: flex;
+    height: 100vh;
+}          
+#sidebar {
+    min-width: 17vw;
+    background: #333333; /* 黄色*/
+    color: #fff; /*白*/
+}
+#sidebar .sidebar-header {
+    padding: 20px;
+    background:#222222; 
+}
+h3 a{
+    color:#E6FFE9 ; /*赤*/
+}
+#sidebar .toggle-btn{
+    display: none;
+}
+.components {
+    padding: 20px 0;
+    text-align: center;
+}
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.5em;
+    display: block;
+    color:#E6FFE9 ; /*赤*/
+}
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+#content{
+    flex-grow: 1;
+    overflow: auto;
+}
+@media (max-width: 767px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }  
+  #sidebar {
+    width: 100vw;
+    
+  }
+  #content{
+    overflow-y: scroll;
+  }
+  #sidebar .toggle-btn {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 10 !important;
+    padding: 3px;
+    background-color: #ffffff;
+    color: #000;
+    width: 40px;
+    text-align: center;
+  }
+  .sidebar-header{
+    text-align: left !important;
+    font-size: 22px;
+    padding-left: 20px;
+    line-height: 50px !important;
+  }
+}
+@media (min-width: 767px) {
+.components {
+    display: block;
+  }
+}
+
+header{
+    background-image: linear-gradient(-90deg, #9F5069, #1E3F62);
+    /*background: linear-gradient(to bottom, #a6d900 0%, #ff4454 100%);*/
+    /*background: linear-gradient(to bottom, #9F5069 0%, #1E3F62 100%);
+    animation: huerotator 1s infinite alternate; */
+    
+    color:#FFFFFF ;
+    margin:0 0 40px;
+    text-align: center;
+    padding:80px 0;
+}
+.upload{
+    height: 16vh;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.4em;
+}
+.upload label{
+    border: 1px solid;
+    padding: 7px 40px;
+}
+input[type="file"]{
+    display: none;
+} 
+
+.pichidden{
+    opacity: 0;
+    transition: 2.0s;
+}
+#show input[type="submit"]{
+    border: 1px solid white;
+    /*background: #FF570D;*/
+    background-image: linear-gradient(-90deg, #B77062, #4F619C);
+}
+.changed-box{
+    opacity: 1;
+}
+.changed-header{
+    background: linear-gradient(-90deg, #9F5069 0%, #1E3F62 100%);
+    /*background-image: linear-gradient(to bottom, #DAEBEC 0%, #B75C38 100%);*/
+    animation: huerotator 2s infinite alternate;
+} 
+@keyframes huerotator {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}

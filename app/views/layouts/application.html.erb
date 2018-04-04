@@ -14,17 +14,18 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
-    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
-
-    <div class="container">
-      <%= render 'layouts/flash_messages' %>
-
-      <%= yield %>
-      
-    </div>
+    <div class="wrapper">
+      <nav id="sidebar">
+        <%= render 'layouts/navbar' %>
+      </nav>
+      <div id="content">
+        <%= yield %>
+      </div>  
+    </div>    
+    
   </body>
 </html>

@@ -1,23 +1,32 @@
 <% if logged_in? %>
-  <div class="row">
-    <aside class="col-md-4">
-      <%= form_for(@picture) do |f| %>
-        <div class="form-group">
-          <%= f.label:image, "+Upload Pictures" %>
-          <%= f.file_field:image %>
-          <%= f.hidden_field:image_cache %>
-        </div>
-        <%=  f.submit 'Post', class:'btn btn-primary btn-sm' %>
+    <header>
+      <div class="upload">
+        <%= form_for(@picture) do |f| %>
         
-      <% end %>
+            <%= f.label:image, "+Upload Pictures" %>
+            <%= f.file_field:image %>
+            <%= f.hidden_field:image_cache %>
+          <div id="show" class="pichidden">  
+            <%=  f.submit 'Post', class:'submit' %>
+          </div>
+        <% end %>
+        
+        <script>
+          $('input:file').change(function(){
+            if ($('input:file').get(0).files.length != 0) {
+              $('header').addClass("changed-header"); 
+              $('#show').addClass("changed-box");  
+            }else{
+              $('header').removeClass("changed-header");
+              $('#show').removeClass("changed-box");  
+            }
+          });
+        </script>
       
-      <div class="star"></div>
-      <script>
-        $(".star").raty({ score: 3 });
-      </script>
-      
-    </aside>
-    <div class="col-xs-8">
+      </div>
+    </header>
+    <%= render 'layouts/flash_messages' %>
+    <div>
       <%= render 'pictures/pictures', pictures: @pictures %>
     </div>
     
@@ -35,13 +44,15 @@
         scoreName: 'evaluation[point]'
       });
     </script>
-    
-  </div>
+ 
+  
+  
 <% else %>
-  <div class="center jumbotron">
+  <div class="center jumbotron ">
     <div class="text-center">
       <h1>Welcome to the Rate Pics</h1>
       <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
     </div>
   </div>
+  
 <% end %>
