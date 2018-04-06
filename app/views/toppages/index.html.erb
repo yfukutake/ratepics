@@ -2,10 +2,10 @@
     <header>
       <div class="upload">
         <%= form_for(@picture) do |f| %>
-        
-            <%= f.label:image, "+Upload Pictures" %>
-            <%= f.file_field:image %>
-            <%= f.hidden_field:image_cache %>
+          
+          <%= f.label:image, "+Upload Pictures" %>
+          <%= f.file_field:image %>
+          <%= f.hidden_field:image_cache %>
           <div id="show" class="pichidden">  
             <%=  f.submit 'Post', class:'submit' %>
           </div>
@@ -26,26 +26,8 @@
       </div>
     </header>
     <%= render 'layouts/flash_messages' %>
-    <div>
-      <%= render 'pictures/pictures', pictures: @pictures %>
-    </div>
-    
-    <script>
-    $('.rated').raty({
-      path: '/assets/',
-      readOnly: true,
-      score: function() {
-      return $(this).attr('data-score');
-      }
-    });
-    
-    $('.rating').raty({
-        path: '/assets',
-        scoreName: 'evaluation[point]'
-      });
-    </script>
- 
-  
+      
+    <%= render 'pictures/pictures', pictures: @pictures %>
   
 <% else %>
   <div class="center jumbotron ">

@@ -1,5 +1,32 @@
+<header>
+  <div class="upload">
+    <%= form_for(@picture) do |f| %>
+          
+      <%= f.label:image, "+Upload Pictures" %>
+      <%= f.file_field:image %>
+      <%= f.hidden_field:image_cache %>
+      <div id="show" class="pichidden">  
+        <%=  f.submit 'Post', class:'submit' %>
+      </div>
+    <% end %>
+        
+    <script>
+      $('input:file').change(function(){
+        if ($('input:file').get(0).files.length != 0) {
+          $('header').addClass("changed-header"); 
+          $('#show').addClass("changed-box");  
+        }else{
+          $('header').removeClass("changed-header");
+          $('#show').removeClass("changed-box");  
+        }
+      });
+    </script>
+      
+  </div>
+</header>
+<%= render 'layouts/flash_messages' %>
 <ul class="pics">
-  <% pictures.each do |picture| %>
+  <% @pictures.each do |picture| %>
     <% user = picture.user %>
     <li class="pic-list">
       <div class="pic">
@@ -7,7 +34,7 @@
         <div class="tag">
           <%= link_to user.name, user_path(user) %> <span>posted at <%= picture.created_at %></span>
         </div>
-        <h2 class="mygraph<%= pictures.find_index picture %>"></h2>
+        <h2 class="mygraph<%= @pictures.find_index picture %>"></h2>
         <img class="img-responsive img-rounded" src="<%= picture.image.url%>" alt="">
         
         <%= render 'evaluations/rate_button', picture: picture %>
@@ -49,13 +76,14 @@
             var obj = JSON.parse(str);
             var concepts = obj.outputs[0].data.concepts;
             var random = Math.floor(Math.random()*concepts.length);
-            $(".mygraph<%= pictures.find_index picture %>").html(concepts[random].name);
+            $(".mygraph<%= @pictures.find_index picture %>").html(concepts[random].name);
             console.log(str);
         }).fail(function(jqXHR, textStatus, errorThrown){
         });
       </script>
     </li>
   <% end %>
-  
-  <%= paginate pictures %>
+  <div class="pagination">
+    <%= link_to pictures_path, method: :get do%> <i class="fas fa-random fa-3x"></i><%end%>
+  </div>
 </ul>

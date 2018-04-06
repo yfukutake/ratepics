@@ -4,8 +4,7 @@ class ToppagesController < ApplicationController
       @user = current_user
       @picture = current_user.pictures.build
       
-      #これは自分の投稿の一覧なので要修正
-      @pictures = current_user.pictures.order('created_at DESC').page(params[:page])
+      @pictures = Picture.all.order('created_at DESC').page(params[:page])
       
       
      

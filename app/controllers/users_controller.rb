@@ -6,6 +6,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @picture= current_user.pictures.build
+    @pictures = @user.pictures.order('created_at DESC').page(params[:page])
+    counts(@user)
   end
 
   def new
@@ -24,8 +27,10 @@ class UsersController < ApplicationController
   end
   
   def evaluations
-    @user = User.find(params[:id])
+    @user = current_user
+    @picture= current_user.pictures.build
     @pictures = @user.scores.order('created_at DESC').page(params[:page])
+    counts(@user)
     render :show #一覧URLにアクセスした時に表示するページ
   end
   

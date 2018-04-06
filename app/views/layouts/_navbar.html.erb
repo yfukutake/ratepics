@@ -1,6 +1,6 @@
 
 <div class="sidebar-header">
-  <h3><a href="/">Rate Pics</a></h3>
+  <h3><a href="/"><i class="fas fa-star fa-rotate-90 fa-fw faa-shake animated-hover"></i>Rate Pics</a></h3>
 </div>
    
   <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
@@ -8,10 +8,10 @@
     <div class="menu-list">
       <ul id="menu-content" class=" components collapse out">
         <% if logged_in? %>
-          <li><%= link_to 'Yours', users_path %></li>
-          <li><a>Random</a></li>
-          <li><a>Upload</a></li>
-          <li><%= link_to 'Sign out', signout_path, method: :delete %></li>
+          <li><%= link_to user_path(current_user), method: :get do%><i class="far fa-user-circle fa-fw fa-lg"></i><%=current_user.name %> <%end%></li>
+          <li><%= link_to pictures_path, method: :get do%><i class="fas fa-random fa-lg fa-fw"></i> Random<%end%></li>
+          <li><a href="#top"><i class="fas fa-cloud-upload-alt fa-fw fa-lg"></i>Upload</a></li>
+          <li><%= link_to signout_path, method: :delete do%><i class="fas fa-sign-out-alt fa-fw fa-lg"></i> Sign out<%end%></li>
              
         <% else %>
           <li><%= link_to 'Sign up', signup_path %></li>

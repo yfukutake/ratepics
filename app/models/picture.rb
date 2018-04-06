@@ -1,6 +1,7 @@
 class Picture < ApplicationRecord
   before_destroy :clean_s3
   belongs_to :user
+  paginates_per 6
   
   validates :user_id, presence:true
   validates :image, presence:true

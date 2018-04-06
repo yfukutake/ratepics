@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   
   def counts(user)
     @count_pictures=user.pictures.count
-    @count_evaluations = user.evaluations.count
+    @count_evaluations = current_user.evaluations.count
   end
   
 end

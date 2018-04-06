@@ -12,6 +12,6 @@ Rails.application.routes.draw do
       get :evaluations
     end
   end
-  resources :pictures, only: [:create, :destroy]
+  resources :pictures, only: [:index, :create, :destroy]
   resources :evaluations, only: [:create, :destroy]
 end
