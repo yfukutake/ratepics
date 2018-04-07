@@ -1,5 +1,4 @@
 <% if current_user.rated?(picture) %>
-  <%# @evaluation = Evaluation.find_by(picture_id: @picture, user_id: current_user.id) %>
   
   <div class ="stars">
     <div class="rated" data-score= <%= picture.evaluations.average(:point).round(2) %> ></div>

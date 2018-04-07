@@ -10,15 +10,20 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
     <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
     
   </head>
 
   <body>
+    
+    <div class="overlay">
+      <div class="popup-content"></div>
+    </div>
+    
     <div class="wrapper">
       <nav id="sidebar">
         <%= render 'layouts/navbar' %>
@@ -29,18 +34,29 @@
     </div>
     
     <script>
-    $('.rated').raty({
-      path: '/assets/',
-      readOnly: true,
-      score: function() {
-      return $(this).attr('data-score');
-      }
-    });
+      $('.rated').raty({
+        path: '/assets/',
+        readOnly: true,
+        score: function() {
+        return $(this).attr('data-score');
+        }
+      });
     
-    $('.rating').raty({
+      $('.rating').raty({
         path: '/assets',
         scoreName: 'evaluation[point]'
       });
+      
+      $('input:file').change(function(){
+        if ($('input:file').get(0).files.length != 0) {
+          $('header').addClass("changed-header"); 
+          $('#show').addClass("changed-box");  
+        }else{
+          $('header').removeClass("changed-header");
+          $('#show').removeClass("changed-box");  
+        }
+      });
+      
     </script>
     
   </body>

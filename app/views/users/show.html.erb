@@ -1,5 +1,5 @@
 <header>
-  <div class="upload">
+  <div class="upload" id="upload">
     <%= form_for(@picture) do |f| %>
           
       <%= f.label:image, "+Upload Pictures" %>
@@ -9,19 +9,6 @@
         <%=  f.submit 'Post', class:'submit' %>
       </div>
     <% end %>
-        
-    <script>
-      $('input:file').change(function(){
-        if ($('input:file').get(0).files.length != 0) {
-          $('header').addClass("changed-header"); 
-          $('#show').addClass("changed-box");  
-        }else{
-          $('header').removeClass("changed-header");
-          $('#show').removeClass("changed-box");  
-        }
-      });
-    </script>
-      
   </div>
 </header>
 <%= render 'layouts/flash_messages' %>

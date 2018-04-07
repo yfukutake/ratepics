@@ -4,21 +4,22 @@
     <li class="pic-list">
       <div class="pic">
         
-        <div class="tag">
-          <%= link_to user.name, user_path(user) %> <span>posted at <%= picture.created_at %></span>
-        </div>
-        <h2 class="mygraph<%= pictures.find_index picture %>"></h2>
-        <img class="img-responsive img-rounded" src="<%= picture.image.url%>" alt="">
+        <img class="img-responsive img-rounded" src="<%= picture.image.thumb.url%>" alt="">
+        <div class="layer">
+          <div class="tag">
+            <%= link_to user.name, user_path(user) %> <span>posted at <%= picture.created_at %></span>
+          </div>
+          <h2 class="mygraph<%= pictures.find_index picture %>"></h2>
         
-        <%= render 'evaluations/rate_button', picture: picture %>
+          <a class="popup" href="<%= picture.image.url %>"><i class="fas fa-external-link-square-alt fa-3x"></i></a>
+          <%= render 'evaluations/rate_button', picture: picture %>
         
-        <% if current_user == picture.user %>
-          <%= link_to picture, method: :delete, data: { confirm: "You sure?" }, class:'btn btn-default trashbox' do %>
-            <span class = "glyphicon glyphicon-trash" ></span>
+          <% if current_user == picture.user %>
+            <%= link_to picture, method: :delete, data: { confirm: "You sure?" }, class:'btn btn-default trashbox' do %>
+              <span class = "glyphicon glyphicon-trash" ></span>
+            <% end %>
           <% end %>
-        <% end %>
-        
-        
+        </div>
       </div>
     
       <script>
@@ -53,6 +54,7 @@
             console.log(str);
         }).fail(function(jqXHR, textStatus, errorThrown){
         });
+
       </script>
     </li>
   <% end %>
