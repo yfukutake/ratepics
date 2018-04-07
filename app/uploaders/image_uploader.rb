@@ -39,10 +39,10 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def crop
     manipulate! do |img|
-      gravity = Magick::CenterGravity # 中央から切り取ります。
+      gravity = Magick::CenterGravity 
       crop_w = img.columns
       crop_h = img.rows
-      # 画像のサイズが縦横違った場合は小さい方に合わせてトリミングする。
+      
       if img.rows <= img.columns
         crop_w = img.rows
       else
