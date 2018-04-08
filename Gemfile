@@ -64,3 +64,9 @@ gem 'jquery-raty-rails', github: 'bmc/jquery-raty-rails'
 gem 'config'
 
 gem 'fog-aws'
+
+gem 'dotenv-rails'
+
+group :production do
+  gem 'pg', '0.21.0'
+end
