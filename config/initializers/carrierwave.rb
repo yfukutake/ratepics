@@ -7,7 +7,7 @@ CarrierWave.configure do |config|
     aws_access_key_id:     ENV["S3_KEY"],
     
     aws_secret_access_key: ENV["S3_SECRET"],
-    # Tokyo
+    
     region:                ENV["S3_REGION"],
   }
   
@@ -23,7 +23,7 @@ CarrierWave.configure do |config|
   config.cache_dir = "#{Rails.root}/tmp/uploads"          
 
   config.fog_directory    = ENV['S3_BUCKET_NAME']
-  config.asset_host         = "#{ENV['S3_ASSET_URL']}/#{ENV['S3_BUCKET_NAME']}"
+  config.asset_host       = "#{ENV['S3_ASSET_URL']}/#{ENV['S3_BUCKET_NAME']}"
   
 end
 

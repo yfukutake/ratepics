@@ -159,7 +159,7 @@ input[type="file"]{
 }
 h2{
     position: absolute;
-    font-size: 3.3em;
+    font-size: 3.4em;
     top: 50%;
     left: 50%;
     color: #EEEEEE;
@@ -254,5 +254,8 @@ li{
     height: 100vh;
 }
 .words{
+    text-align: center;
+}
+.alert{
     text-align: center;
 }

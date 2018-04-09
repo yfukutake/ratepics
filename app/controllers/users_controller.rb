@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show, :evaluations]
-  def index
-    @users = User.all.page(params[:page])
-  end
-
+  before_action :require_user_logged_in, only: [:show, :evaluations]
+  
   def show
     @user = User.find(params[:id])
     @picture= current_user.pictures.build
@@ -18,10 +15,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = 'ユーザーを登録しました'
+      flash[:success] = 'Welcome New User!'
       redirect_to @user
     else
-      flash.now[:danger] = 'ユーザーの登録に失敗しました'
+      flash.now[:danger] = 'Something Gone Wrong'
       render :new
     end
   end
@@ -31,7 +28,7 @@ class UsersController < ApplicationController
     @picture= current_user.pictures.build
     @pictures = @user.scores.order('created_at DESC').page(params[:page])
     counts(@user)
-    render :show #一覧URLにアクセスした時に表示するページ
+    render :show 
   end
   
   private
