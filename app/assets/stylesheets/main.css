@@ -251,6 +251,9 @@ li{
     animation: huerotator 2s infinite alternate;
     height: 100vh;
 }
+.front h1{
+    text-align: center;
+}
 .words{
     text-align: center;
 }
