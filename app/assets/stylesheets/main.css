@@ -82,9 +82,6 @@ h3 a{
 
 header{
     background-image: linear-gradient(-90deg, #9F5069, #1E3F62);
-    /*background: linear-gradient(to bottom, #a6d900 0%, #ff4454 100%);*/
-    /*background: linear-gradient(to bottom, #9F5069 0%, #1E3F62 100%);
-    animation: huerotator 1s infinite alternate; */
     
     color:#FFFFFF ;
     margin:0 0 40px;
@@ -112,7 +109,7 @@ input[type="file"]{
 }
 #show input[type="submit"]{
     border: 1px solid white;
-    /*background: #FF570D;*/
+    
     background-image: linear-gradient(-90deg, #B77062, #4F619C);
 }
 .changed-box{
@@ -120,7 +117,6 @@ input[type="file"]{
 }
 .changed-header{
     background: linear-gradient(-90deg, #9F5069 0%, #1E3F62 100%);
-    /*background-image: linear-gradient(to bottom, #DAEBEC 0%, #B75C38 100%);*/
     animation: huerotator 2s infinite alternate;
 } 
 @keyframes huerotator {
@@ -182,15 +178,17 @@ h2{
     position: absolute;
     top: 70%;
     left: 50%;
-    transform: translateY(-70%) translateX(-50%);
-    -webkit- transform: translateY(-70%) translateX(-50%);
+    -ms-transform: translate(-50%,-70%);
+    -webkit-transform: translate(-50%,-70%);
+    transform: translate(-50%,-70%)
 }
 .sbox{
     position: absolute;
     top: 85%;
     left: 50%;
-    transform: translateY(-85%) translateX(-50%);
-    -webkit- transform: translateY(-85%) translateX(-50%);
+    -ms-transform: translate(-50%,-85%);
+    -webkit-transform: translate(-50%,-85%);
+    transform: translate(-50%,-85%)
 }
 .layer{
     opacity: 0;
